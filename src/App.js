@@ -30,7 +30,6 @@ function App() {
     setWords(message)
     readIttLoud(message)
     setIsTalk(false)
-
   }
 
   const readIttLoud = (message) => {
@@ -47,7 +46,7 @@ function App() {
 
   return (
     <div className="container">
-      <button className="btn" onClick={start} style={{ backgroundColor: isTalk ? '#ddd' : '#d63031'  }}  disabled = {isTalk} ><BiMicrophone size={60} color="white" /></button>
+      <button className="btn" onClick={start}  disabled = {isTalk} ><BiMicrophone size={60} color="white" /></button>
       <h3 style={{ color:'#636e72' }}> {isTalk ? "Talking..." : "Click button above to talk"} </h3>
       <h2>{words}</h2>
     </div>
