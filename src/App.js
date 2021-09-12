@@ -19,9 +19,11 @@ function App() {
 
   const getBot = (texts) => {
     const text = {
-      'text' : texts
+      texts
     }
-    axios.post('https://tegiai-gi4coglcca-de.a.run.app/add_input', text)
+    axios.post('https://tegiai-gi4coglcca-de.a.run.app/add_input', {
+      "text" : texts
+    })
     .then(res => {
       console.log(res)
     })
