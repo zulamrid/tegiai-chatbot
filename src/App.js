@@ -6,6 +6,10 @@ import axios from 'axios'
 
 function App() {
 
+  React.useEffect(() => {
+    axios.post('https://tegiai-gi4coglcca-de.a.run.app/reset')
+  }, [])
+
   const [isTalk, setIsTalk] = React.useState(false)
   const [words, setWords] = React.useState('')
   const [msg, setMsg] = React.useState([])
@@ -25,7 +29,10 @@ function App() {
       "text" : texts
     })
     .then(res => {
-      console.log(res)
+      let lastIndex = res.data.messages.length - 1
+      msg.push(res.data.messages[lastIndex])
+      readIttLoud(res.data.messages[lastIndex].text)
+      console.log(lastIndex)
     })
   }
   
@@ -45,6 +52,10 @@ function App() {
     msg.push({'is_user': true, "text": message})
     getBot(message)
       setWords('')
+  }
+
+  const reset = () => {
+    alert("tes")
   }
 
   const readIttLoud = (message) => {
