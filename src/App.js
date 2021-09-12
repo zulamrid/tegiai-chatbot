@@ -2,14 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { FaPlay, FaMicrophone } from "react-icons/fa";
-
-
-
+import axios from 'axios'
 
 function App() {
 
   const [isTalk, setIsTalk] = React.useState(false)
   const [words, setWords] = React.useState('')
+  const [msg, setMsg] = React.useState([])
 
   const SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
   const recog = new SpeechRecognition()
@@ -17,6 +16,17 @@ function App() {
   const start = () => {
     recog.start()
   }
+
+  const getBot = (texts) => {
+    const text = {
+      'text' : texts
+    }
+    axios.post('https://tegiai-gi4coglcca-de.a.run.app/add_input', text)
+    .then(res => {
+      console.log(res)
+    })
+  }
+  
 
   recog.onstart = function () {
     console.log("Voice is activated")
@@ -30,6 +40,9 @@ function App() {
     setWords(message)
     readIttLoud(message)
     setIsTalk(false)
+    msg.push({'is_user': true, "text": message})
+    getBot(message)
+      setWords('')
   }
 
   const readIttLoud = (message) => {
@@ -43,6 +56,13 @@ function App() {
     window.speechSynthesis.speak(speech)
   }
 
+  const sendquestion = () => {
+    console.log(msg)
+    msg.push({'is_user': true, "text": words})
+    getBot(words)
+    setWords('')
+  }
+
 
   return (
     <div className="container">
@@ -50,20 +70,51 @@ function App() {
       <h3 style={{ color:'#636e72' }}> {isTalk ? "Talking..." : "Click button above to talk"} </h3>
       <h2>{words}</h2> */}
       <div className="chat-box">
-        akaka
+        <div className="ballon-container">
+
+          {msg.length === 0 ?
+            "No Message"
+            :
+            msg.map((v, i) => 
+              v.is_user ?
+              <div className="ballon ">
+                <div className="ballon-ava-left">
+
+                </div>
+                <div className="ballon-text-left">
+                  <span>{v.text}</span>
+                </div>
+              </div>
+              :
+              <div className="ballon">
+
+                <div className="ballon-text-right">
+                  <span>{v.text}</span>
+                </div>
+                <div className="ballon-ava-right">
+
+                </div>
+              </div>
+
+            
+            )
+          }
+
+        </div>
       </div>
       <div className="text-box">
         <div className="rec-container">
           <FaMicrophone size={25} color="red" onClick={start} />
         </div>
         <div className="input-container">
-          <input type="text" placeholder="Input your message here" />
+          <input type="text" value={words} placeholder="Input your message here" onChange={(e) => setWords(e.target.value)} />
         </div>
         <div className="button-container">
-          <button><FaPlay size={15} color="white" /></button>
+          <button onClick={sendquestion}><FaPlay size={15} color="white" /></button>
         </div>
       </div>
     </div>
+
   );
 }
 
