@@ -1,10 +1,12 @@
 import axios from 'axios';
+import alertwav from './../../assets/wav/alert.wav';
 
 const url = 'https://tegiai-gi4coglcca-de.a.run.app';
 
 const storeDataChat = (payload) => ({ type: 'STORE_CHAT', datas: payload })
 const setLoading = () => ({ type: 'LOADING' })
 
+let audio = new Audio(alertwav)
 
 export const storeChat = (payload) => {
     return (dispatch) => {
@@ -19,6 +21,7 @@ export const storeChat = (payload) => {
                 dispatch(storeDataChat(res.data.messages[lastIndex]))
                 // readIttLoud(res.data.messages[lastIndex].text)
                 console.log(lastIndex)
+               audio.play()
             })
     }
 }
