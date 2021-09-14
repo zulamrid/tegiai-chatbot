@@ -7,15 +7,19 @@ import axios from 'axios';
 import loadgif from './../assets/gif/loading.gif'
 
 
-export const RootApp = ({ datas_chat, storeChat, isLoadingChat }) => {
+export const RootApp = ({ datas_chat, storeChat, isLoading }) => {
     const [words, setWords] = React.useState('')
     const SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
     const recog = new SpeechRecognition()
+    const [loading, setLoading] = React.useState(true)
 
     React.useEffect(() => {
-        console.log(isLoadingChat)
         axios.post('https://tegiai-gi4coglcca-de.a.run.app/reset')
     }, [])
+
+    React.useEffect(() => {
+      setLoading(!loading)
+    }, [datas_chat])
 
     const start = () => {
         recog.start()
@@ -44,9 +48,6 @@ export const RootApp = ({ datas_chat, storeChat, isLoadingChat }) => {
 
     return (
         <div className="container">
-            {/* <button className="btn" onClick={start}  disabled = {isTalk} ><BiMicrophone size={60} color="white" /></button>
-        <h3 style={{ color:'#636e72' }}> {isTalk ? "Talking..." : "Click button above to talk"} </h3>
-        <h2>{words}</h2> */}
             <div className="chat-box">
                 <div className="ballon-container">
 
@@ -61,13 +62,17 @@ export const RootApp = ({ datas_chat, storeChat, isLoadingChat }) => {
                                     </div>
                                     <div className="ballon-text-left">
                                         <span>{v.text}</span>
+                                        <div className="line" />
+                                        <span className="korean">{v.korean}</span>
                                     </div>
                                 </div>
                                 :
                                 <div className="ballon" key={i}>
 
-                                    <div className="ballon-text-right">
+                                    <div className="ballon-text-left">
                                         <span>{v.text}</span>
+                                        <div className="line" />
+                                        <span className="korean">{v.korean}</span>
                                     </div>
                                     <div className="ballon-ava-right">
 
@@ -75,7 +80,7 @@ export const RootApp = ({ datas_chat, storeChat, isLoadingChat }) => {
                                 </div>
                         )
                     }
-                    {isLoadingChat ?
+                    {loading ?
                         <div className="reply-loading">
                             <img src={loadgif} />
                         </div>
@@ -104,7 +109,7 @@ export const RootApp = ({ datas_chat, storeChat, isLoadingChat }) => {
 const mapStateToProps = ({ app }) => {
     return {
         datas_chat: app.datas_chat,
-        isLoadingChat: app.isLoadingChat
+        isLoading: app.isLoading
     }
 }
 const mapDispatchToProps = dispatch => {

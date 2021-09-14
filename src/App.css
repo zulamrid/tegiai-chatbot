@@ -11,20 +11,21 @@ body{
 
 @media screen and (min-width: 1024px) {
   #root{
-    padding: 0 15%;
+    padding: 0 25%;
   }
 
-
   .chat-box{
-    height: 90vh;
+    height: 80vh;
     background-image: url('https://cdn.wallpapersafari.com/54/0/HluF7g.jpg');
+    overflow: auto;
+    padding-bottom: 100px;
   }
 
   .text-box{
-    /* position: absolute; */
+    /* position: fixed; */
     display: flex;
     flex-direction: row;
-    min-height: calc(18vh - 56px);
+    min-height: 10vh;
     width: 100%;
     bottom: 0;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
@@ -72,7 +73,7 @@ body{
     align-items: center;
     width: 40px;
     border-radius: 50%;
-    aspect-ratio: 1;
+    height: 40px;
     border: 0;
     background-color: #2980b9;
   }
@@ -116,17 +117,44 @@ body{
 
   .ballon-text-right{
     width: 80%;
-    padding: 10px 10px;
+    padding: 15px 10px;
     font-size: 12px;
+    
   }
 
   .ballon-text-left{
     width: 80%;
-    padding: 10px 10px;
+    padding: 15px 10px;
     font-size: 12px;
+    
   }
 
+  .reply-loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+  }
 
+  .reply-loading img{
+    height: 100px;
+  }
+
+  .no-msg{
+    /* text-align: center; */
+  }
+
+  .no-msg span{
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, 0);
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #2980b9;
+    color: #fff;
+
+  }
  
 }
 
@@ -425,6 +453,16 @@ body{
   background-color: #d63031;
 }
 
+
 .btn:hover{
   transform: scale(1.05);
+}
+
+.line{
+  border-top: 1px solid #ddd;
+  margin: 10px 0px;;
+}
+
+.korean{
+  font-weight: bold;
 }

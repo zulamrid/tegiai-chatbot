@@ -1,6 +1,6 @@
 const initialState = {
     datas_chat: [],
-    isLoadingChat: false
+    isLoading: false
 }
 
 export default (state = initialState, action) => {
@@ -9,12 +9,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 datas_chat: state.datas_chat.concat(action.datas),
-                isLoadingChat: true,
             }
         case 'LOADING':
             return {
                 ...state,
-                isLoadingChat: false,
+                isLoading: !state.isLoading,
             }
         default:
             return state
