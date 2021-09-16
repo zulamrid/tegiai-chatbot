@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/tegiai-chatbot/static/css/main.3b2a2b95.chunk.css",
+    "main.js": "/tegiai-chatbot/static/js/main.39c55006.chunk.js",
+    "main.js.map": "/tegiai-chatbot/static/js/main.39c55006.chunk.js.map",
+    "runtime-main.js": "/tegiai-chatbot/static/js/runtime-main.8ba3cc39.js",
+    "runtime-main.js.map": "/tegiai-chatbot/static/js/runtime-main.8ba3cc39.js.map",
+    "static/js/2.e36f6a28.chunk.js": "/tegiai-chatbot/static/js/2.e36f6a28.chunk.js",
+    "static/js/2.e36f6a28.chunk.js.map": "/tegiai-chatbot/static/js/2.e36f6a28.chunk.js.map",
+    "static/js/3.a8e40654.chunk.js": "/tegiai-chatbot/static/js/3.a8e40654.chunk.js",
+    "static/js/3.a8e40654.chunk.js.map": "/tegiai-chatbot/static/js/3.a8e40654.chunk.js.map",
+    "index.html": "/tegiai-chatbot/index.html",
+    "static/css/main.3b2a2b95.chunk.css.map": "/tegiai-chatbot/static/css/main.3b2a2b95.chunk.css.map",
+    "static/js/2.e36f6a28.chunk.js.LICENSE.txt": "/tegiai-chatbot/static/js/2.e36f6a28.chunk.js.LICENSE.txt",
+    "static/media/alert.54f09e8a.wav": "/tegiai-chatbot/static/media/alert.54f09e8a.wav",
+    "static/media/loading.b25e7f61.gif": "/tegiai-chatbot/static/media/loading.b25e7f61.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8ba3cc39.js",
+    "static/js/2.e36f6a28.chunk.js",
+    "static/css/main.3b2a2b95.chunk.css",
+    "static/js/main.39c55006.chunk.js"
+  ]
+}
