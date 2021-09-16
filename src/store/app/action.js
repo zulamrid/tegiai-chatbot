@@ -5,7 +5,7 @@ import {
 } from './api';
 
 const url = 'https://tegiai-gi4coglcca-de.a.run.app';
-const translate_url = 'http://localhost:6789'
+const translate_url = 'https://tegiainew.de.r.appspot.com/'
 
 const storeDataChat = (payload) => ({
     type: 'STORE_CHAT',
