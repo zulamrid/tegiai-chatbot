@@ -14,7 +14,7 @@ export const RootApp = ({ datas_chat, storeChat, isLoading }) => {
     const [loading, setLoading] = React.useState(true)
 
     React.useEffect(() => {
-        axios.post('https://tegiai-gi4coglcca-de.a.run.app/reset')
+        axios.post('https://tegiai-gi4coglcca-de.a.run.app/botreset')
     }, [])
 
     React.useEffect(() => {
